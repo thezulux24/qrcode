@@ -45,3 +45,5 @@ if data:
     )
 else:
     st.error("Please enter a link to generate the QR code.")
+
+st.markdown("<br><br><center>Developed by thezulux24</center>", unsafe_allow_html=True)
