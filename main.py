@@ -16,6 +16,7 @@ def generate_qr(data):
     return image
 
 st.title("QR Generator")
+st.write("Simple and Secure")
 
 data = st.text_input("Enter the link for the QR code:")
 
