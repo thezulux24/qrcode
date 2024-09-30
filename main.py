@@ -30,19 +30,18 @@ st.write("Simple and Secure")
 data = st.text_input("Enter the link for the QR code:")
 logo = st.file_uploader("Upload a logo (optional)", type=["png", "jpg", "jpeg"])
 
-if st.button("Generate QR Code"):
-    if data:
-        img = generate_qr(data, logo)
-        buffer = BytesIO()
-        img.save(buffer, format="PNG")
-        img_base64 = base64.b64encode(buffer.getvalue()).decode()
-        img_html = f'<img src="data:image/png;base64,{img_base64}" width="300" style="display: block; margin-left: auto; margin-right: auto;" />'
-        st.markdown(img_html, unsafe_allow_html=True)
-        st.download_button(
-            label="Download QR Code as PNG",
-            data=buffer,
-            file_name="qrcode.png",
-            mime="image/png"
-        )
-    else:
-        st.error("Please enter a link to generate the QR code.")
+if data:
+    img = generate_qr(data, logo)
+    buffer = BytesIO()
+    img.save(buffer, format="PNG")
+    img_base64 = base64.b64encode(buffer.getvalue()).decode()
+    img_html = f'<img src="data:image/png;base64,{img_base64}" width="300" style="display: block; margin-left: auto; margin-right: auto;" />'
+    st.markdown(img_html, unsafe_allow_html=True)
+    st.download_button(
+        label="Download QR Code as PNG",
+        data=buffer,
+        file_name="qrcode.png",
+        mime="image/png"
+    )
+else:
+    st.error("Please enter a link to generate the QR code.")
