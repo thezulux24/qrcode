@@ -17,6 +17,7 @@ def generate_qr(data, logo=None):
 
     if logo:
         logo = Image.open(logo)
+        logo = logo.convert("RGBA")  # Ensure the logo is in RGBA format
         logo = logo.resize((image.size[0] // 3, image.size[1] // 3))
         pos = ((image.size[0] - logo.size[0]) // 2, (image.size[1] - logo.size[1]) // 2)
         image.paste(logo, pos, mask=logo)
